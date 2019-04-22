@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const studentCollection = require("./student.collection");
+const studentCollection = require("./student.schema");
 
 const Student = mongoose.model("student", studentCollection);
 

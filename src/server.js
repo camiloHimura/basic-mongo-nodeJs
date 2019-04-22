@@ -6,12 +6,15 @@ module.exports = {
     start: async () => {
         try{
             await connect.run();
+            var newStudent;
             console.log("----- connected -----");
-            let newStudent = await Student.create({firstName: "camilo"}) 
-            console.log(newStudent);
+            /* newStudent = await Student.create({firstName: "camilo"})*/
+            console.log(await Student.find({ firstName: "Andres"}).exec() );
+            console.log(await Student.find({ firstName: "camilo"}).exec() );
         }
         catch(e){
             console.log("----- Error -----");
+            console.log(e);
         }
     }
 
