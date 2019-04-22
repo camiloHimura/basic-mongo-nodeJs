@@ -9,12 +9,9 @@ module.exports = new mongoose.Schema({
     likes: [
         {type: String},
     ],    
-    info: {
-        schools: {
-            type: String
-        },
-        age: {
-            type: Number
-        }
-    }        
+    school: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true,
+        ref: "school"
+    },        
 }) 
