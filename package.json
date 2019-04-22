@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/camiloHimura/basic-mongo-nodeJs/issues"
   },
-  "homepage": "https://github.com/camiloHimura/basic-mongo-nodeJs#readme"
+  "homepage": "https://github.com/camiloHimura/basic-mongo-nodeJs#readme",
+  "dependencies": {
+    "mongoose": "^5.5.3"
+  }
 }
