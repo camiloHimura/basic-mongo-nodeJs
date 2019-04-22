@@ -1,16 +1,15 @@
 const connect = require("./connect");
-const Student = require("./student/student.model");
+const StudentCrud = require("./student/student.crud");
 
 module.exports = {
 
     start: async () => {
         try{
             await connect.run();
-            var newStudent;
             console.log("----- connected -----");
-            /* newStudent = await Student.create({firstName: "camilo"})*/
-            console.log(await Student.find({ firstName: "Andres"}).exec() );
-            console.log(await Student.find({ firstName: "camilo"}).exec() );
+            /* console.log(await StudentCrud.getUserById("5cbe257275036372881f1ca4")) */
+            /* console.log(await StudentCrud.createUser({firstName: "Teo"})) */
+/*             console.log(await StudentCrud.updateUserById("5cbe257275036372881f1ca4", {firstName: "camiloHimura"})) */
         }
         catch(e){
             console.log("----- Error -----");
