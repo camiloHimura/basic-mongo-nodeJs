@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src",
+    "start": "nodemon --exec npm run node",
+
+    "prenode": "rimraf dist && babel src -d dist",
+    "node": "node dist",
+    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/camiloHimura/basic-mongo-nodeJs.git"
+    "url": "https://github.com/camiloHimura/basic-mongo-nodeJs.git"
   },
   "keywords": [
     "mongo",
@@ -24,5 +28,14 @@
   "homepage": "https://github.com/camiloHimura/basic-mongo-nodeJs#readme",
   "dependencies": {
     "mongoose": "^5.5.3"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.3",
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "nodemon": "^1.18.11"
   }
 }

@@ -1,5 +1,4 @@
-const conect = require("./conect");
+const server = require("./server");
 
-conect.run()
-    .then(info => console.log("----- conected -----", info))
-    .catch(error => console.log("----- error -----", error))
+server.start();
+
