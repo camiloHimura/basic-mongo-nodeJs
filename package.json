@@ -1,0 +1,24 @@
+{
+  "name": "mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camiloHimura/basic-mongo-nodeJs.git"
+  },
+  "keywords": [
+    "mongo",
+    "node.",
+    "mongoose"
+  ],
+  "author": "cmailo colmenares (camiloHimura)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camiloHimura/basic-mongo-nodeJs/issues"
+  },
+  "homepage": "https://github.com/camiloHimura/basic-mongo-nodeJs#readme"
+}
