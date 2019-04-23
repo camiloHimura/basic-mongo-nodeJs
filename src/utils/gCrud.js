@@ -2,6 +2,10 @@ const getById = model => (id) => {
     return model.findById(id).exec()
 }
 
+const find = model => (options) => {
+    return model.find(options)
+}
+
 const findOne = model => (options) => {
     return model.findOne(options)
 }
@@ -23,8 +27,9 @@ const updateById = model => (id, update) => {
 }
 
 module.exports = model => ({
-    findOne: findOne(model),
+    find: find(model),
     create: create(model),
+    findOne: findOne(model),
     getById: getById(model),
     getAlls: getAlls(model),
     removeById: removeById(model),

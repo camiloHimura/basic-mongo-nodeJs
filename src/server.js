@@ -10,19 +10,38 @@ module.exports = {
             console.log("----- connected -----");
             let result, school;
             
+            result = await School.create({name: "Cefa", students: 250, staff:["a", "b", "c", "d"]})
+            
             /*
-                -relationship
-                ---result = await School.findOne({name: "Maria Cano"}).exec()
-                ---result = await Student.create({firstName: "teo", school: result._id});
-                
-                -search    
-                ---result = await Student.findOne({firstName: "teo"}).populate("school").exec();
-                
-                result = await School.create({name: "Maria Cano"})
-                result = await Student.getById("5cbe257275036372881f1ca4")
-                result = await Student.updateById("5cbe257275036372881f1ca4", {firstName: "camiloHimura"}))
+            -search    
+            result = await School.find({ staff: {$in: ["b", "c"]} }).sort({students: 1}).exec();
+            result = await Student.findOne({firstName: "teo"}).populate("school").exec();
+            
+            -Insert
+            result = await School.create([{name: "José Maria", students: 100, isMilitar: true, staff: ["a", "b", "c"]}, 
+            {name: "Pedro Nel", students: 200, isMilitar: true, staff: ["a", "b", "c", "d"]}, 
+            {name: "Escolme", students: 400, staff: ["a", "b", "c", "d"]},
+            {name: "Ferrini", students: 400, staff: ["a", "b", "c", "d", "f"]}])
+            
+            -Querys
+            result = await Student.getById("5cbe257275036372881f1ca4")
+            result = await School.find({students: {$gt: 100}}).exec();
+            result = await Student.updateById("5cbe257275036372881f1ca4", {firstName: "camiloHimura"}))
+            result = await School.find({students: {$gt: 100, $lt: 400}}).exec();
+            result = await School.find({students: {$gt: 100, $lt: 400}, isMilitar: true}).exec();
+            result = await School.find({staff: "d", isMilitar: true}).exec();
+            result = await School.find({ staff: {$in: ["d", "f"]} }).exec();
+            result = await School.find({ staff: {$in: ["d", "f"]} }).limit(2).exec();
+            result = await School.find({ staff: {$in: ["b", "c"]} }).sort("+students").exec();
+            result = await School.find({ staff: {$in: ["b", "c"]} }).sort("-students").exec();
+            result = await School.find({ staff: {$in: ["b", "c"]} }).sort({students: 1}).exec();
+            result = await School.find({ staff: {$in: ["b", "c"]} }).sort({students: -1}).exec();
+            
+            -relationship
+            result = await School.findOne({name: "Maria Cano"}).exec()
+            result = await Student.create({firstName: "teo", school: result._id});
             */
-            console.log(result)
+           console.log(result.staffCount)
         }
         catch(e){
             console.log("----- Error -----");
