@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec npm run node",
-
     "prenode": "rimraf dist && babel src -d dist",
     "node": "node dist",
-    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +25,9 @@
   },
   "homepage": "https://github.com/camiloHimura/basic-mongo-nodeJs#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
     "mongoose": "^5.5.3"
   },
   "devDependencies": {

@@ -34,5 +34,13 @@ school.post("find", function(doc, next) {
 //compound index
 school.index({isMilitar: 1, name: 1}, 
              {unique: true})
-  
+
+school.post('save', function(error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000) {
+        next(new Error('There was a duplicate key error'));
+    } else {
+        next();
+    }
+});
+
 module.exports = school;

@@ -1,16 +1,32 @@
+const express = require("express");
+
+const cors = require("cors");
 const connect = require("./connect");
-const Student = require("./student/student.model");
-const School = require("./school/school.model");
+const { json, urlencoded } = require("body-parser");
+
+const tagRouter = require("./tag/tag.router")
+
+
+const app = express();
+
+app.use(cors());
+app.use(json());
+app.use(urlencoded({ extended: true }));
+app.use(function logErrors (err, req, res, next) {
+    console.error("... error ....", err.stack)
+    next(err)
+})
+
+app.use("/api/tag", tagRouter)
 
 module.exports = {
-
     start: async () => {
         try{
             await connect.run();
             console.log("----- connected -----");
             let result, school;
+            app.listen(3000, () => console.log(`I'm node listen port 3000`))
             
-            result = await School.create({name: "Uniminuto", students: 200, isMilitar: false})
             
             /*
             -search    
@@ -45,7 +61,7 @@ module.exports = {
             result = await School.findOne({name: "Maria Cano"}).exec()
             result = await Student.create({firstName: "teo", school: result._id});
             */
-           console.log(result)
+           //console.log(result)
         }
         catch(e){
             console.log("----- Error -----");
