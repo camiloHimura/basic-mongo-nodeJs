@@ -5,19 +5,16 @@ const connect = require("./connect");
 const { json, urlencoded } = require("body-parser");
 
 const tagRouter = require("./tag/tag.router")
-
+const logRouter = require("./log/log.router")
 
 const app = express();
 
 app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: true }));
-app.use(function logErrors (err, req, res, next) {
-    console.error("... error ....", err.stack)
-    next(err)
-})
 
 app.use("/api/tag", tagRouter)
+app.use("/api/log", logRouter)
 
 module.exports = {
     start: async () => {

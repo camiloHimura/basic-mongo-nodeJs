@@ -1,42 +1,26 @@
+const errorHandle = require("../utils/errorHandler");
+
 const getById = (model, {format}) => async (req, res) => {
     try{
-
         return model.findById(id).exec()
     }catch(error){
-        console.log("--catch: ",error);
-        let info = "";
-        if(error.name === 'MongoError' && error.code === 11000){
-            info = "There was a duplicate key error";
-        }
-        res.status(404).send({messaje: info}).end()
+        errorHandle(error, res);
     }
 }
 
 const find = (model, {format}) => async (req, res) => {
     try{
-
         return model.find(options)
     }catch(error){
-        console.log("--catch: ",error);
-        let info = "";
-        if(error.name === 'MongoError' && error.code === 11000){
-            info = "There was a duplicate key error";
-        }
-        res.status(404).send({messaje: info}).end()
+        errorHandle(error, res);
     }
 }
 
 const findOne = (model, {format}) => async (req, res) => {
     try{
-
         return model.findOne(options)
     }catch(error){
-        console.log("--catch: ",error);
-        let info = "";
-        if(error.name === 'MongoError' && error.code === 11000){
-            info = "There was a duplicate key error";
-        }
-        res.status(404).send({messaje: info}).end()
+        errorHandle(error, res);
     }
 }
 
@@ -45,12 +29,7 @@ const getAlls = (model, {arrayFormat}) => async (req, res) => {
         let info = await model.find({}).exec()
         res.status(200).send(arrayFormat(info))
     }catch(error){
-        console.log("--catch: ",error);
-        let info = "";
-        if(error.name === 'MongoError' && error.code === 11000){
-            info = "There was a duplicate key error";
-        }
-        res.status(404).send({messaje: info}).end()
+        errorHandle(error, res);
     }
 }
 
@@ -62,40 +41,23 @@ const create = (model, {format}) => async (req, res) => {
         res.status(201).send({status: "saved", data: format(data)});
 
     }catch(error){
-        console.log("--catch: ",error);
-        let info = "";
-        if(error.name === 'MongoError' && error.code === 11000){
-            info = "There was a duplicate key error";
-        }
-        res.status(404).send({messaje: info}).end()
+        errorHandle(error, res);
     }
 }
 
 const findAndremove = (model, {format}) => async (req, res) => {
     try{
-
         return model.findOneAndRemove(options).exec()
     }catch(error){
-        console.log("--catch: ",error);
-        let info = "";
-        if(error.name === 'MongoError' && error.code === 11000){
-            info = "There was a duplicate key error";
-        }
-        res.status(404).send({messaje: info}).end()
+        errorHandle(error, res);
     }
 }
 
 const findAndUpdate = (model, {format}) => async (req, res) => {
     try{
-
         return model.findOneAndUpdate(options, update, {new: true}).exec()
     }catch(error){
-        console.log("--catch: ",error);
-        let info = "";
-        if(error.name === 'MongoError' && error.code === 11000){
-            info = "There was a duplicate key error";
-        }
-        res.status(404).send({messaje: info}).end()
+        errorHandle(error, res);
     }
 }
 
