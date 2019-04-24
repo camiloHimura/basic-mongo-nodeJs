@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-module.exports = new mongoose.Schema({
+const student = new mongoose.Schema({
     firstName: { 
         type: String, 
         required: true,
@@ -15,3 +15,5 @@ module.exports = new mongoose.Schema({
         ref: "school"
     },        
 }) 
+
+module.exports = student;

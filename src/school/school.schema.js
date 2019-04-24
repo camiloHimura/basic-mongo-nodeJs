@@ -4,7 +4,6 @@ const school = new mongoose.Schema({
     name: { 
         type: String, 
         required: true,
-        unique: true
     },
     students: {
         type: Number,
@@ -21,4 +20,19 @@ const school = new mongoose.Schema({
 school.virtual("staffCount")
     .get(function() { return this.staff.length})
 
+//Hook Synchronous
+school.pre("save", function() { console.log("before save")})
+school.post("save", function() { console.log("post save")})
+
+//Hook ASynchronous
+school.post("find", function(doc, next) { 
+                            setTimeout(() => {
+                                console.log("setTimeout post save", doc); next()
+                            }, 330)
+                                    });
+
+//compound index
+school.index({isMilitar: 1, name: 1}, 
+             {unique: true})
+  
 module.exports = school;
