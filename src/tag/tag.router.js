@@ -7,10 +7,10 @@ const TagRouter = Router();
 TagRouter.route("/")
     .get(getAlls)
     .post(create)
-    .put(findAndUpdate)
     .delete(findAndremove)
     
-TagRouter.route("/:name")
+TagRouter.route("/:id")
     .get(findOne)
+    .put(findAndUpdate)
 
 module.exports = TagRouter; 

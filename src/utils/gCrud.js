@@ -18,7 +18,10 @@ const find = (model, {format}) => async (req, res) => {
 
 const findOne = (model, {format}) => async (req, res) => {
     try{
-        return model.findOne(options)
+        let data = await model.findOne({_id: req.params.id}).exec();
+        if(!data){ return res.status(400).end() }
+
+        res.status(200).send(format(data));
     }catch(error){
         errorHandle(error, res);
     }
@@ -55,7 +58,10 @@ const findAndremove = (model, {format}) => async (req, res) => {
 
 const findAndUpdate = (model, {format}) => async (req, res) => {
     try{
-        return model.findOneAndUpdate(options, update, {new: true}).exec()
+        let data = await model.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).exec();
+        if(!data){ return res.status(400).end() }
+
+        res.status(200).send({status: "updated", data: format(data)});
     }catch(error){
         errorHandle(error, res);
     }

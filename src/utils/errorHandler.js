@@ -10,7 +10,7 @@ const getInfo = errmsg => ({
 
 module.exports = (error, res) => {
     console.log("------ ErrorHAndle catch ------");
-    console.log(error.errmsg);
+    console.log(error);
 
     let errorInfo = getInfo(error.errmsg);
     let info = "";

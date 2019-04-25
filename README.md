@@ -30,6 +30,9 @@ Everything in Mongoose starts with a Schema. Each schema maps to a MongoDB colle
 ## Compound index
 
 
+## Operator
+* [Operator update](https://docs.mongodb.com/manual/reference/operator/update/)
+
 ## Links
 * [Mongodb 4](https://www.mongodb.com/mongodb-4.0)
 * [Stitch](https://www.mongodb.com/cloud/stitch)
