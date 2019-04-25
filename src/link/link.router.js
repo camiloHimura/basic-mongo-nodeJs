@@ -1,5 +1,5 @@
 const {Router} = require("express");
-const {find, create, findOne, getById, addTags,
+const {find, create, findOne, addTags,
         getAlls, findAndremove, findAndUpdate} = require("./link.controller");
 
 const LinkRouter = Router();
@@ -15,5 +15,8 @@ LinkRouter.route("/:id")
 
 LinkRouter.route("/:id/addTags")
     .put(addTags)
+
+LinkRouter.route("/find")
+    .post(find)
 
 module.exports = LinkRouter; 

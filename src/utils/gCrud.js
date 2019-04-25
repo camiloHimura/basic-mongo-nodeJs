@@ -1,16 +1,13 @@
 const errorHandle = require("../utils/errorHandler");
 
-const getById = (model, {format}) => async (req, res) => {
-    try{
-        return model.findById(id).exec()
-    }catch(error){
-        errorHandle(error, res);
-    }
-}
-
 const find = (model, {format}) => async (req, res) => {
     try{
-        return model.find(options)
+        let data = await model.findOne(req.body).exec();
+        
+        if(!data){ return res.status(400).end() }
+
+        res.status(200).send(format(data));
+
     }catch(error){
         errorHandle(error, res);
     }
@@ -50,7 +47,11 @@ const create = (model, {format}) => async (req, res) => {
 
 const findAndremove = (model, {format}) => async (req, res) => {
     try{
-        return model.findOneAndRemove(options).exec()
+        let data = await model.findOneAndRemove(req.body).exec();
+        if(!data){ return res.status(400).end() }
+
+        res.status(200).send({status: "removed"});
+
     }catch(error){
         errorHandle(error, res);
     }
@@ -76,7 +77,6 @@ module.exports = (model, options) => {
         find: find(model, options),
         create: create(model, options),
         findOne: findOne(model, options),
-        getById: getById(model, options),
         getAlls: getAlls(model, options),
         findAndremove: findAndremove(model, options),
         findAndUpdate: findAndUpdate(model, options)
