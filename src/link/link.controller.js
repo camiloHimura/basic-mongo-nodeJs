@@ -13,6 +13,19 @@ const arrayFormat = data => data.reduce((accum, current) => [...accum, format(cu
 
 module.exports = {  ...gCrud(Link, {format,arrayFormat}),
 
+                    find: async (req, res) => {
+                        try{
+                            let data = await Link.findOne({_id: req.params.id})
+                                                .populate("tags").exec();
+
+                            if(!data){ return res.status(400).end() }
+
+                            res.status(200).send(format(data));
+                        }catch(error){
+                            errorHandle(error, res);
+                        }
+                    },
+                    
                     findOne: async (req, res) => {
                         try{
                             let data = await Link.findOne({_id: req.params.id})

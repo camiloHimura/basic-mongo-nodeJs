@@ -11,6 +11,7 @@ const logSchema = new mongoose.Schema({
 })
 
 logSchema.index({
+  value: 1,
   action: 1,
   date: 1
 }, {

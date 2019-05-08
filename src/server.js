@@ -20,8 +20,8 @@ app.use("/api/link", linkRouter)
 
 module.exports = {
     start: async () => {
-        try{
-            await connect.run();
+        try {
+            await connect();
             console.log("----- connected -----");
             let result, school;
             app.listen(3000, () => console.log(`I'm node listen port 3000`))
