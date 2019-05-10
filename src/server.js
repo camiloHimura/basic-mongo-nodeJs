@@ -27,8 +27,7 @@ module.exports = {
             app.listen(3000, () => console.log(`I'm node listen port 3000`))
             
             /*
-            -search    
-            result = await School.find({ staff: {$in: ["b", "c"]} }).sort({students: 1}).exec();
+            -search 
             result = await Student.findOne({firstName: "teo"}).populate("school").exec();
             
             -Insert
@@ -37,18 +36,13 @@ module.exports = {
             result = await School.create({name: "Uniminuto", students: 500, staff:["c", "d"]})
             {name: "Escolme", students: 400, staff: ["a", "b", "c", "d"]},
             {name: "Ferrini", students: 400, staff: ["a", "b", "c", "d", "f"]}])
-            
-            - delete
-            result = await School.deleteMany({students: {$gt: 100}}).exec();
 
             -Querys
             result = await Student.getById("5cbe257275036372881f1ca4")
-            result = await School.find({students: {$gt: 100}}).exec();
             result = await Student.updateById("5cbe257275036372881f1ca4", {firstName: "camiloHimura"}))
             result = await School.find({students: {$gt: 100, $lt: 400}}).exec();
             result = await School.find({students: {$gt: 100, $lt: 400}, isMilitar: true}).exec();
             result = await School.find({staff: "d", isMilitar: true}).exec();
-            result = await School.find({ staff: {$in: ["d", "f"]} }).exec();
             result = await School.find({ staff: {$in: ["d", "f"]} }).limit(2).exec();
             result = await School.find({ staff: {$in: ["b", "c"]} }).sort("+students").exec();
             result = await School.find({ staff: {$in: ["b", "c"]} }).sort("-students").exec();

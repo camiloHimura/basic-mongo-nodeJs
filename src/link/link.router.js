@@ -1,6 +1,6 @@
 const {Router} = require("express");
-const {find, create, findOne, addTags,
-        getAlls, findAndremove, findAndUpdate} = require("./link.controller");
+const {find, create, findOne, addTags, greater, greaterEqual, inArray, 
+    less, noEqual, lessEqual, getAlls, findAndremove, findAndUpdate} = require("./link.controller");
 
 const LinkRouter = Router();
 
@@ -15,8 +15,27 @@ LinkRouter.route("/:id")
 
 LinkRouter.route("/:id/addTags")
     .put(addTags)
-
+    
 LinkRouter.route("/find")
     .post(find)
+
+LinkRouter.route("/find/greater")
+    .post(greater)
+
+LinkRouter.route("/find/greaterequal")
+    .post(greaterEqual)
+
+LinkRouter.route("/find/less")
+    .post(less)
+
+LinkRouter.route("/find/lessEqual")
+    .post(lessEqual)
+
+LinkRouter.route("/find/inarray")
+    .post(inArray)
+
+LinkRouter.route("/find/noEqual")
+    .post(noEqual)
+    
 
 module.exports = LinkRouter; 

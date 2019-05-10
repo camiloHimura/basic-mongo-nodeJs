@@ -54,9 +54,43 @@ Documents have many of their own built-in instance methods. We may also define o
 * `Model.findByIdAndUpdate({properties}`, {dataToUpdate}, {new: true}).exec(): {new: true} it's necessary in order to return the new updated object, if not the retuned obj it's going to be the old one
 * `Model.findOneAndRemove({properties})`
 
-[Middleware](https://mongoosejs.com/docs/middleware.html)
+#### Comparison Query Operators
+* Match equal value
+    * `model.find({ property: {$eq: value }})`
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/eq/#op._S_eq)
 
-[Model definitions](https://mongoosejs.com/docs/api.html#model)
+* Select documents where the value is greater than (>)
+    * [Examples](/src/utils/greater.js) `model.find({ property: {$gt: value }})`, this property not work for getting data in base of the length (arrays)
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/gt/#op._S_gt)
+
+* Select documents where the value is greater or equal than (>=)
+    * [Examples](/src/utils/greaterEqual.js) `model.find({ property: {$gte: value }})`
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/gte/#op._S_gte)
+
+* Matches any of the values specified in an array.
+    * [Examples](/src/utils/inArray.js) `model.find({ property: {$in: [value, value, ...] }})`
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/in/#op._S_in)
+
+* Matches values that are less than a specified value.
+    * [Examples](/src/utils/less.js) `model.find({ property: {$lt: value }})`
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/lt/#op._S_lt)
+
+* 	Matches values that are less than or equal to a specified value.
+    * [Examples](/src/utils/lessEqual.js) `model.find({ property: {$lte: value }})`
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/lte/#op._S_lte)
+
+* 	Matches all values that are not equal to a specified value.
+    * [Examples](/src/utils/noEqual.js) `model.find({ property: {$ne: value }})`
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/ne/#op._S_ne)
+
+* 	Matches none of the values specified in an array.
+    * [Examples](/src/utils/noInArray.js) `model.find({ property: {$nin: value }})`
+    * [Docs](https://docs.mongodb.com/manual/reference/operator/query/nin/#op._S_nin)
+
+## Middleware
+Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. 
+
+[Docs](https://mongoosejs.com/docs/middleware.html)
 
 ## Comparison
 

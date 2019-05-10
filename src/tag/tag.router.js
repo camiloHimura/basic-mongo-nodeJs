@@ -1,5 +1,6 @@
 const {Router} = require("express");
-const {find, create, findOne, getAlls, findAndremove, findAndUpdate, similarName} = require("./tag.controller");
+const {find, create, findOne, getAlls, findAndremove, findEqual,
+    findAndUpdate, similarName} = require("./tag.controller");
 
 const TagRouter = Router();
 
@@ -17,5 +18,8 @@ TagRouter.route("/")
     .get(getAlls)
     .post(create)
     .delete(findAndremove)
+
+TagRouter.route("/find/equal")
+    .post(findEqual)
 
 module.exports = TagRouter; 

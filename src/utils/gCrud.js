@@ -68,6 +68,19 @@ const findAndUpdate = (model, {format}) => async (req, res) => {
     }
 }
 
+const findEqual = (model, {arrayFormat}) => async (req, res) => {
+        try{
+            let {color} = req.body;
+            let data = await model.find({ color: {$eq: color }}).exec();
+
+            if(!data){ return res.status(304).end() }
+    
+            res.status(200).send(arrayFormat(data));
+        }catch(error){
+            errorHandle(error, res);
+        }
+    }
+
 const defaultFormat = data => data;
 
 module.exports = (model, options) => {
@@ -78,6 +91,7 @@ module.exports = (model, options) => {
         create: create(model, options),
         findOne: findOne(model, options),
         getAlls: getAlls(model, options),
+        findEqual: findEqual(model, options),
         findAndremove: findAndremove(model, options),
         findAndUpdate: findAndUpdate(model, options)
     }
