@@ -98,25 +98,40 @@ There are many other useful operators that can make our life easy, short list:
 * [Comments](https://docs.mongodb.com/manual/reference/operator/query/comment/#op._S_comment): $comments
 * [Projection](https://docs.mongodb.com/manual/reference/operator/projection/): $, $elemtMatch, $slice, $meta
 
+#### Update Operators
+[Documentation](https://docs.mongodb.com/manual/reference/operator/update/)
+
+* [Field](https://docs.mongodb.com/manual/reference/operator/update-field/): $inc, $min, $max, $mul, $rename, $set, $setOnInsert, $unset
+* [Array Update Operators](https://docs.mongodb.com/manual/reference/operator/update-array/): $addToset, $pop, $pull, $push, $pullAll
+    * Array Update Operator Modifiers: $each, $position, $slice, $sort
+
+#### Aggregation Pipeline Stages
+Some times is necessary to add new files on our document, limit the outcomes or group it, this is the [Documentation](https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/) 
+
+#### Cursor Operators
+These methods modify the way that the underlying query is executed.
+[Documentation](https://docs.mongodb.com/manual/reference/method/js-cursor/)
+````
+    model.find({ staff: {$in: ["d", "f"]} }).limit(2).exec();
+    model.find({ staff: {$in: ["b", "c"]} }).sort("+students").exec();
+    model.find({ staff: {$in: ["b", "c"]} }).sort("-students").exec();
+    model.find({ staff: {$in: ["b", "c"]} }).sort({students: 1}).exec();
+    model.find({ staff: {$in: ["b", "c"]} }).sort({students: -1}).exec();
+````
+
 
 ## Middleware
 Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. 
 
 [Docs](https://mongoosejs.com/docs/middleware.html)
 
-## Comparison
+### Hooks
 
-[Query Comparison](https://docs.mongodb.com/manual/reference/operator/query-comparison/)
 
 ## Virtuals
 
-## Hooks
-
 ## Compound index
 
-
-## Operator
-* [Operator update](https://docs.mongodb.com/manual/reference/operator/update/)
 
 ## Links
 * [Mongodb 4](https://www.mongodb.com/mongodb-4.0)
