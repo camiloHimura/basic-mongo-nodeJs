@@ -55,6 +55,8 @@ Documents have many of their own built-in instance methods. We may also define o
 * `Model.findOneAndRemove({properties})`
 
 #### Comparison Query Operators
+[Documentation](https://docs.mongodb.com/manual/reference/operator/query/)
+
 * Match equal value
     * `model.find({ property: {$eq: value }})`
     * [Docs](https://docs.mongodb.com/manual/reference/operator/query/eq/#op._S_eq)
@@ -86,6 +88,16 @@ Documents have many of their own built-in instance methods. We may also define o
 * 	Matches none of the values specified in an array.
     * [Examples](/src/utils/noInArray.js) `model.find({ property: {$nin: value }})`
     * [Docs](https://docs.mongodb.com/manual/reference/operator/query/nin/#op._S_nin)
+
+There are many other useful operators that can make our life easy, short list:
+
+* [Logical](https://docs.mongodb.com/manual/reference/operator/query-logical/): $and, $or, $not, $nor
+* [Elemet](https://docs.mongodb.com/manual/reference/operator/query-element/): $exist, $type
+* [Evaluation](https://docs.mongodb.com/manual/reference/operator/query/): $expr, $jsonSchema, $mod, $regex, $text, $where
+* [Array](https://docs.mongodb.com/manual/reference/operator/query-array/): $all, $elemMatch, $size
+* [Comments](https://docs.mongodb.com/manual/reference/operator/query/comment/#op._S_comment): $comments
+* [Projection](https://docs.mongodb.com/manual/reference/operator/projection/): $, $elemtMatch, $slice, $meta
+
 
 ## Middleware
 Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. 
