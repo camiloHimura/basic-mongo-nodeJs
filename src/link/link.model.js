@@ -27,6 +27,11 @@ linkSchema.index({
   unique: true
 })
 
+//Query Helpers
+linkSchema.query.fillTags = function(){
+    return this.populate("tags");
+}
+
 //Virtual
 linkSchema.virtual("numTags")
     .get(function(){
@@ -41,5 +46,6 @@ linkSchema.pre("save", function(){
 
             this.name = temName.join("");
         })
+
 
 module.exports = mongoose.model("link", linkSchema);

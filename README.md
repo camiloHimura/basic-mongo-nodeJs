@@ -9,6 +9,7 @@ Everything in Mongoose starts with a Schema. Each schema maps to a MongoDB colle
 * [Example](/src/tag/tag.model.js) 
 * [Schema definitions](https://mongoosejs.com/docs/guide.html#definition)
 * [Add](https://mongoosejs.com/docs/api.html#schema_Schema-add)
+* [schematypes](https://mongoosejs.com/docs/schematypes.html)
 
 
 Is possible to add values after creating a schema whit the method add
@@ -111,14 +112,30 @@ Some times is necessary to add new files on our document, limit the outcomes or 
 #### Cursor Operators
 These methods modify the way that the underlying query is executed.
 [Documentation](https://docs.mongodb.com/manual/reference/method/js-cursor/)
-````
+```
     model.find({ staff: {$in: ["d", "f"]} }).limit(2).exec();
     model.find({ staff: {$in: ["b", "c"]} }).sort("+students").exec();
     model.find({ staff: {$in: ["b", "c"]} }).sort("-students").exec();
     model.find({ staff: {$in: ["b", "c"]} }).sort({students: 1}).exec();
     model.find({ staff: {$in: ["b", "c"]} }).sort({students: -1}).exec();
-````
+```
 
+###Query Helpers
+You can also add query helper functions, which are like instance methods but for mongoose queries. Query helper methods let you extend mongoose's chainable query builder API. 
+
+* [Definition](/src/link/link.model.js) 
+* [Execution (findWithTags)](/src/link/link.controller.js) 
+
+####Virtuals
+Virtuals are document properties that you can get and set but that do not get persisted to MongoDB. The getters are useful for formatting or combining fields, while setters are useful for de-composing a single value into multiple values for storage.
+
+If you use toJSON() or toObject() mongoose will not include virtuals by default. This includes the output of calling JSON.stringify() on a Mongoose document, because JSON.stringify() calls toJSON(). Pass { virtuals: true } to either toObject() or toJSON().
+
+* [Definition](/src/link/link.model.js) 
+* Execution: every time we make a request through a Schema with a virtual definition that value is going to be returned by default 
+
+
+[Documentation](https://mongoosejs.com/docs/guide.html#query-helpers)
 
 ## Middleware
 Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. 
@@ -128,7 +145,7 @@ Middleware (also called pre and post hooks) are functions which are passed contr
 ### Hooks
 
 
-## Virtuals
+
 
 ## Compound index
 

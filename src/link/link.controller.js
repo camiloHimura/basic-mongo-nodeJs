@@ -26,14 +26,13 @@ module.exports = {  ...gCrud(Link, {format,arrayFormat}),
                     lessEqual: lessEqual(Link, {format,arrayFormat}),
                     greaterEqual: greaterEqual(Link, {format,arrayFormat}),
                     
-                    find: async (req, res) => {
+                    findWithTags: async (req, res) => {
                         try{
-                            let data = await Link.findOne({_id: req.params.id})
-                                                .populate("tags").exec();
+                            let data = await Link.find().fillTags().exec();
 
                             if(!data){ return res.status(400).end() }
 
-                            res.status(200).send(format(data));
+                            res.status(200).send(arrayFormat(data));
                         }catch(error){
                             errorHandle(error, res);
                         }
